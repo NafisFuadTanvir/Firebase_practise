@@ -1,4 +1,6 @@
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react';
+import auth from '../../Firebase/Firebase.config';
 
 const Daisyreg = () => {
 
@@ -7,6 +9,14 @@ const Daisyreg = () => {
         const email= e.target.email.value;
         const password= e.target.password.value;
         console.log(email,password)
+
+        createUserWithEmailAndPassword(auth,email,password)
+        .then((result)=>{
+          console.log(result)
+        })
+        .catch((error)=>{
+          console.log(error.message)
+        })
     }
     return (
         <div className="hero min-h-screen bg-base-200">
